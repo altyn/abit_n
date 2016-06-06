@@ -1,0 +1,105 @@
+// START RIGHT SIDEBAR NAV
+aside#right-sidebar-nav
+    ul#chat-out.side-nav.rightside-navigation
+        li.li-hover
+            a.chat-close-collapse.right(href='#', data-activates='chat-out')
+                i.mdi-navigation-close
+            #right-search.row
+                form.col.s12
+                    .input-field
+                        i.mdi-action-search.prefix
+                        input#icon_prefix.validate(type='text')
+                        label(for='icon_prefix') Search
+        li.li-hover
+            ul.chat-collapsible(data-collapsible='expandable')
+                li
+                    .collapsible-header.teal.white-text.active
+                        i.mdi-social-whatshot
+                        | Recent Activity
+                    .collapsible-body.recent-activity
+                        .recent-activity-list.chat-out-list.row
+                            .col.s3.recent-activity-list-icon
+                                i.mdi-action-add-shopping-cart
+                            .col.s9.recent-activity-list-text
+                                a(href='#') just now
+                                p Jim Doe Purchased new equipments for zonal office.
+                        .recent-activity-list.chat-out-list.row
+                            .col.s3.recent-activity-list-icon
+                                i.mdi-device-airplanemode-on
+                            .col.s9.recent-activity-list-text
+                                a(href='#') Yesterday
+                                p Your Next flight for USA will be on 15th August 2015.
+                        .recent-activity-list.chat-out-list.row
+                            .col.s3.recent-activity-list-icon
+                                i.mdi-action-settings-voice
+                            .col.s9.recent-activity-list-text
+                                a(href='#') 5 Days Ago
+                                p Natalya Parker Send you a voice mail for next conference.
+                        .recent-activity-list.chat-out-list.row
+                            .col.s3.recent-activity-list-icon
+                                i.mdi-action-store
+                            .col.s9.recent-activity-list-text
+                                a(href='#') Last Week
+                                p Jessy Jay open a new store at S.G Road.
+                        .recent-activity-list.chat-out-list.row
+                            .col.s3.recent-activity-list-icon
+                                i.mdi-action-settings-voice
+                            .col.s9.recent-activity-list-text
+                                a(href='#') 5 Days Ago
+                                p Natalya Parker Send you a voice mail for next conference.
+                li
+                    .collapsible-header.light-blue.white-text.active
+                        i.mdi-editor-attach-money
+                        | Sales Repoart
+                    .collapsible-body.sales-repoart
+                        .sales-repoart-list.chat-out-list.row
+                            .col.s8 Target Salse
+                            .col.s4
+                                span#sales-line-1
+                        .sales-repoart-list.chat-out-list.row
+                            .col.s8 Payment Due
+                            .col.s4
+                                span#sales-bar-1
+                        .sales-repoart-list.chat-out-list.row
+                            .col.s8 Total Delivery
+                            .col.s4
+                                span#sales-line-2
+                        .sales-repoart-list.chat-out-list.row
+                            .col.s8 Total Progress
+                            .col.s4
+                                span#sales-bar-2
+                li
+                    .collapsible-header.red.white-text
+                        i.mdi-action-stars
+                        | Favorite Associates
+                    .collapsible-body.favorite-associates
+                        .favorite-associate-list.chat-out-list.row
+                            .col.s4
+                                img.circle.responsive-img.online-user.valign.profile-image(src='img/avatar.jpg', alt='')
+                            .col.s8
+                                p Eileen Sideways
+                                p.place Los Angeles, CA
+                        .favorite-associate-list.chat-out-list.row
+                            .col.s4
+                                img.circle.responsive-img.online-user.valign.profile-image(src='img/avatar.jpg', alt='')
+                            .col.s8
+                                p Zaham Sindil
+                                p.place San Francisco, CA
+                        .favorite-associate-list.chat-out-list.row
+                            .col.s4
+                                img.circle.responsive-img.offline-user.valign.profile-image(src='img/avatar.jpg', alt='')
+                            .col.s8
+                                p Renov Leongal
+                                p.place Cebu City, Philippines
+                        .favorite-associate-list.chat-out-list.row
+                            .col.s4
+                                img.circle.responsive-img.online-user.valign.profile-image(src='img/avatar.jpg', alt='')
+                            .col.s8
+                                p Weno Carasbong
+                                p Tokyo, Japan
+                        .favorite-associate-list.chat-out-list.row
+                            .col.s4
+                                img.circle.responsive-img.offline-user.valign.profile-image(src='img/avatar.jpg', alt='')
+                            .col.s8
+                                p Nusja Nawancali
+                                p.place Bangkok, Thailand

@@ -1,0 +1,40 @@
+doctype html
+html
+  head
+    include ./includes/head.pug
+
+  body
+    include ./includes/header.pug
+
+    main
+      // START MAIN
+      #main
+        // START WRAPPER
+        .wrapper
+            include ./includes/navbar.pug
+
+            // START CONTENT
+            section#content
+              // breadcrumbs
+              #breadcrumbs-wrapper.grey.lighten-3
+                .container
+                  .row
+                    .col.s12.m12.l12
+                      h5.breadcrumbs-title #{title}
+                      ol.breadcrumb
+                        li
+                          a(href='') Dashboard
+                        li
+                          a(href='#') UI Elements
+                        li.active Buttons
+
+
+              .container
+                .section
+                  block content
+                  .divider
+
+            include ./includes/right_sidebar.pug
+
+// START FOOTER
+include ./includes/footer.pug

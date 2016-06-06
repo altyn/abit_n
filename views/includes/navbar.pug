@@ -1,0 +1,102 @@
+// START LEFT SIDEBAR NAV
+aside#left-sidebar-nav
+  ul#slide-out.side-nav.fixed.leftside-navigation
+    li.user-details.cyan.darken-2
+      .row
+        .col.col.s4.m4.l4
+          img.circle.responsive-img.valign.profile-image(src='img/avatar.jpg', alt='')
+        .col.col.s8.m8.l8
+          ul#profile-dropdown.dropdown-content
+            li
+              a(href='#')
+                i.mdi-action-face-unlock
+                |  Profile
+            li
+              a(href='#')
+                i.mdi-action-settings
+                |  Settings
+            li
+              a(href='#')
+                i.mdi-communication-live-help
+                |  Help
+            li.divider
+            li
+              a(href='#')
+                i.mdi-action-lock-outline
+                |  Lock
+          a.btn-flat.dropdown-button.waves-effect.waves-light.white-text.profile-btn(href='#', data-activates='profile-dropdown')
+          p.user-role Administrator
+    li.li-hover
+      p.ultra-small.margin.more-text Группы и Департаменты
+    li.bold
+      a.waves-effect.waves-cyan(href='/departments')
+        i.mdi-action-account-balance
+        |  Департаменты
+    li.bold
+      a.waves-effect.waves-cyan(href='/groups')
+        i.mdi-communication-business
+        |  Группы
+    li.no-padding
+      ul.collapsible.collapsible-accordion
+        li.bold
+          a.collapsible-header.waves-effect.waves-cyan
+            i.mdi-image-palette
+            |  Cправочники
+          .collapsible-body
+            ul
+              li
+                a(href='/country') Страны
+              li
+                a(href='/region') Области
+              li
+                a(href='/district') Районы
+              li
+                a(href='/nationality') Национальности
+              li
+                a(href='/position') Должности
+              li
+                a(href='/actitle') Ученые звания
+              li
+                a(href='/acdegree') Акад-я степень
+              li
+                a(href='/jobstatus') Статус ППС
+              li
+                a(href='/disciplines') Дисциплины
+              li
+                a(href='/zachislenie') Условия зачисления
+              li
+                a(href='/formaobuch') Формы обучения
+              li
+                a(href='/sostobuch') Состояние обучения
+    li.li-hover
+      .divider
+    li.li-hover
+      p.ultra-small.margin.more-text Основные
+    li.bold
+      a.waves-effect.waves-cyan(href='/abiturients')
+        i.mdi-social-people
+        |  Абитуриенты
+    li.bold
+      a.waves-effect.waves-cyan(href='/students')
+        i.mdi-social-people
+        |  Студенты
+    li.bold
+      a.waves-effect.waves-cyan(href='/teachers')
+        i.mdi-social-person
+        |  Преподаватели
+    li.bold
+      a.waves-effect.waves-cyan(href='')
+        i.mdi-communication-email
+        |  Mailbox
+        span.new.badge 4
+    li.li-hover
+      .divider
+    li.li-hover
+      p.ultra-small.margin.more-text Daily
+    li.li-hover
+      .row
+        .col.s12.m12.l12
+          .sample-chart-wrapper
+            #ct2-chart.ct-chart.ct-golden-section
+  a.sidebar-collapse.btn-floating.btn-medium.waves-effect.waves-light.hide-on-large-only.darken-2(href='#', data-activates='slide-out')
+    i.mdi-navigation-menu

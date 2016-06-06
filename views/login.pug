@@ -1,0 +1,75 @@
+doctype html
+
+head
+    meta(http-equiv='Content-Type', content='text/html; charset=UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='msapplication-tap-highlight', content='no')
+    meta(name='description', content="Materialize is a Material Design Admin Template,It's modern, responsive and based on Material Design by Google. ")
+    meta(name='keywords', content='materialize, admin template, dashboard template, flat admin template, responsive admin template,')
+    title Login Page | Materialize - Material Design Admin Template
+    // Favicons
+    link(rel='icon', href='img/favicon/favicon-32x32.png', sizes='32x32')
+    // Favicons
+    link(rel='apple-touch-icon-precomposed', href='images/favicon/apple-touch-icon-152x152.png')
+    // For iPhone
+    meta(name='msapplication-TileColor', content='#00bcd4')
+    meta(name='msapplication-TileImage', content='images/favicon/mstile-144x144.png')
+    // For Windows Phone
+    // CORE CSS
+    //link(href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css' rel="stylesheet" )
+    // Google Icon Font
+    link(href='http://fonts.googleapis.com/icon?family=Material+Icons', rel='stylesheet')
+    // Materialize CSS
+    link(type='text/css', rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css')
+    // Import jQuery
+    script(type='text/javascript', src='https://code.jquery.com/jquery-2.1.1.min.js')
+        </body></html>
+    //link(href='css/materialize.css', type='text/css', rel='stylesheet', media='screen,projection')
+    link(href='css/style.css', type='text/css', rel='stylesheet', media='screen,projection')
+    link(href='css/page-center.css', type='text/css', rel='stylesheet', media='screen,projection')
+    // INCLUDED PLUGIN CSS ON THIS PAGE
+    link(href='css/prism.css', type='text/css', rel='stylesheet', media='screen,projection')
+    link(href='js/plugins/perfect-scrollbar/perfect-scrollbar.css', type='text/css', rel='stylesheet', media='screen,projection')
+
+body.cyan.loaded.login-body
+    #login-page.row
+        .col.s12.z-depth-4.card-panel
+            form.login-form(action='/login', method='post')
+                .row
+                    .input-field.col.s12.center
+                        img.responsive-img.valign(src='http://bafe.edu.kg/wp-content/uploads/2016/05/logo.png', alt='')
+                        p.center.login-form-text Форма входа в платформу
+                .row.margin
+                    .input-field.col.s12
+                        i.material-icons.prefix person_outline
+                        input#username(type='text', name='username')
+                        label.center-align(for='username') Username
+                .row.margin
+                    .input-field.col.s12
+                        i.material-icons.prefix lock_outline
+                        input#password(type='password', name="password")
+                        label(for='password') Password
+                .row
+                    .input-field.col.s12.m12.l12.login-text
+                        input#remember-me(type='checkbox')
+                        label(for='remember-me') Remember me
+                .row
+                    .input-field.col.s12
+                        button.btn.waves-effect.waves-light.light-blue.darken-4(type='submit', name='action') Submit
+                            i.material-icons.right send
+                        //input.btn.btn-success(type='submit', value='Войти')
+//
+  ================================================
+  Scripts
+  ================================================
+// jQuery Library
+script(type='text/javascript', src='js/jquery-1.11.2.min.js')
+// materialize js
+script(type='text/javascript', src='js/materialize.js')
+// prism
+script(type='text/javascript', src='js/prism.js')
+// scrollbar
+script(type='text/javascript', src='js/plugins/perfect-scrollbar/perfect-scrollbar.min.js')
+// plugins.js - Some Specific JS codes for Plugin Settings
+script(type='text/javascript', src='js/plugins.js')

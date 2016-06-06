@@ -1,0 +1,57 @@
+extends ../layout
+block content
+    .section
+        if message
+            p #{message}
+        #responsive-table
+            h4.header Список пользователей
+            .row
+                .col.s12.m4.l3
+                    // Modal Trigger
+                    a.waves-effect.waves-light.btn.modal-trigger(href='#modal1') Создать пользователя
+
+                    #modal1.modal
+                        .modal-content
+                            h4 Добавить нового пользователя
+                            .row
+
+                            form(action='/users', method='post')
+                                .row.margin
+                                    .input-field.col.s12
+                                        i.mdi-social-person-outline.prefix
+                                        input#username(type='text', name='username')
+                                        label.center-align(for='username') Username
+
+                                .row.margin
+                                    .input-field.col.s12
+                                        i.mdi-social-person-outline.prefix
+                                        input#nickname(type='text', name='nickname')
+                                        label.center-align(for='nickname') ФИО
+
+                                .row.margin
+                                    .input-field.col.s12
+                                        i.mdi-action-lock-outline.prefix
+                                        input#password(type='password', name='password')
+                                        label(for='password') Password
+
+                                .modal-footer
+                                    input.btn.btn-success(type='submit', value='Сохранить')
+                                    a.modal-action.modal-close.waves-effect.waves-red.btn-flat(href='#!') Отмена
+
+
+                .col.s12.m8.l9
+
+                    table.responsive-table
+                        thead
+                            tr
+                                th(data-field='id') №
+                                th(data-field='username') Имя пользователя
+                                th(data-field='seсondname') ФИО
+                                th(data-field='lastlogin') Последний вход
+                        tbody
+                            each u, i in users
+                                tr
+                                    td #{i+1}
+                                    td #{u.username}
+                                    td #{u.nickname}
+                                    td #{moment(u.created).format('DD-MM-YYYY HH:mm', 'RU')}

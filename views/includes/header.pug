@@ -1,0 +1,25 @@
+header#header.page-topbar
+    // start header nav
+    .navbar-fixed
+        nav.cyan
+            .nav-wrapper
+                h1.logo-wrapper
+                    a.brand-logo.darken-1(href='index.html')
+                        img(src='img/logo.png', alt='materialize logo')
+                    span.logo-text Materialize
+                ul.right.hide-on-med-and-down
+                    li.search-out
+                        input.search-out-text(type='text')
+                    li
+                        a.waves-effect.waves-block.waves-light.show-search(href='javascript:void(0);')
+                            i.mdi-action-search
+                    li
+                        a.waves-effect.waves-block.waves-light.toggle-fullscreen(href='javascript:void(0);')
+                            i.mdi-action-settings-overscan
+                    li
+                        a.waves-effect.waves-block.waves-light(href='javascript:void(0);')
+                            i.mdi-social-notifications
+                    // Dropdown Trigger
+                    li
+                        a.waves-effect.waves-block.waves-light.chat-collapse(href='#', data-activates='chat-out')
+                            i.mdi-communication-chat
