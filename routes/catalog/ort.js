@@ -1,16 +1,16 @@
 var express = require('express');
 var router = express.Router();
-var Nationality = require('../../models/catalog/nationality');
+var Ort = require('../../models/catalog/ort');
 
 router.get('/', function(req, res){
-    Nationality.
+    Ort.
         find({}).
-        sort({ _id: 'asc'}).
+        sort({ created: 'desc'}).
         exec( function (err, catalog) {
             if (err) return console.error(err);
 
-            res.render('catalog/nationality', {
-                title: 'Национальность',
+            res.render('catalog/ort', {
+                title: 'Сертификаты ОРТ',
                 catalog: catalog
             })
         });
@@ -19,26 +19,30 @@ router.get('/', function(req, res){
 router.post('/', function (req, res, done) {
     var id = req.body._id;
 
-    Nationality.findOne({ '_id' : id}, function (err, catalog) {
+    Ort.findOne({ '_id' : id}, function (err, catalog) {
 
         if (err)
             return done(err);
 
         if (catalog) {
             req.flash('message', 'Уже существует!');
-            res.redirect('/position');
+            res.redirect('/ort');
         } else {
 
-            var newCatalog = new Nationality();
+            var newCatalog = new Ort;
 
-            newCatalog._id = req.body._id;
-            newCatalog.desc =  req.body.desc;
+            newCatalog._abiturId = req.body.id;
+            newCatalog.code = req.body.code;
+            newCatalog.color = req.body.color;
+            newCatalog.mainPoint = req.body.mainpoint;
+            newCatalog.subjectPoint = req.body.subjectpoint;
+            newCatalog.foryear = req.body.yr;
 
             newCatalog.save( function (err) {
                 if (err)
                     throw err;
                 req.flash('message', 'Данные успешно добавлены!')
-                res.redirect('/nationality');
+                res.redirect('/ort');
             });
         }
     });

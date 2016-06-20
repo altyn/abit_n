@@ -1455,3 +1455,8 @@ footer.page-footer {
 .login-body {
   background-color: #002147 !important;
 }
+
+.modal.bottom-sheet.abit-modal {
+  max-height: 70% !important;
+  min-height: 45% !important;
+}

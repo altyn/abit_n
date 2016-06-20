@@ -1,16 +1,16 @@
 var express = require('express');
 var router = express.Router();
-var Position = require('../../models/catalog/position');
+var Discipline = require('../../models/catalog/discipline');
 
 router.get('/', function(req, res){
-    Position.
+    Discipline.
         find({}).
-        sort({ _id: 'asc'}).
+        sort({ _id: 'desc'}).
         exec( function (err, catalog) {
             if (err) return console.error(err);
 
-            res.render('catalog/position', {
-                title: 'Должности',
+            res.render('catalog/discipline', {
+                title: 'Каталог "Дисциплина"',
                 catalog: catalog
             })
         });
@@ -19,17 +19,17 @@ router.get('/', function(req, res){
 router.post('/', function (req, res, done) {
     var id = req.body._id;
 
-    Position.findOne({ '_id' : id}, function (err, catalog) {
+    Discipline.findOne({ '_id' : id}, function (err, catalog) {
 
         if (err)
             return done(err);
 
         if (catalog) {
-            req.flash('message', 'Пользователь с таким именем уже существует!');
-            res.redirect('/position');
+            req.flash('message', 'Уже существует!');
+            res.redirect('/discipline');
         } else {
 
-            var newCatalog = new Position();
+            var newCatalog = new Discipline();
 
             newCatalog._id = req.body._id;
             newCatalog.desc =  req.body.desc;
@@ -38,7 +38,7 @@ router.post('/', function (req, res, done) {
                 if (err)
                     throw err;
                 req.flash('message', 'Данные успешно добавлены!')
-                res.redirect('/position');
+                res.redirect('/discipline');
             });
         }
     });

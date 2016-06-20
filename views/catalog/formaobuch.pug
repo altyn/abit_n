@@ -9,28 +9,23 @@ block content
                 .col.s12.m4.l3
                     // Modal Trigger
                     a.waves-effect.waves-light.btn.modal-trigger(href='#modal1') Добавить
-
                     #modal1.modal
                         .modal-content
                             h4 Добавить новые данные
                             .row
-
-                            form(action='/zachislenie', method='post')
+                            form(action='/formaobuch', method='post')
                                 .row.margin
                                     .input-field.col.s6
                                         i.mdi-communication-vpn-key.prefix
                                         input#_id(type='text', name='_id')
                                         label(for='icon_prefix3') Id
-
                                     .input-field.col.s6
                                         i.mdi-action-info-outline.prefix
                                         input#desc(type='text', name='desc')
                                         label(for='icon_info') Описание
-
                                 .modal-footer
                                     input.btn.btn-success(type='submit', value='Сохранить')
                                     a.modal-action.modal-close.waves-effect.waves-red.btn-flat(href='#!') Отмена
-
                 .col.s12.m8.l9
                     table.responsive-table
                         thead
@@ -38,7 +33,7 @@ block content
                                 th(data-field='id') ID
                                 th(data-field='name') Описание
                         tbody
-                            each z, i in zachislenie
+                            each c, i in catalog
                                 tr
-                                    td #{z._id}
-                                    td #{z.desc}
+                                    td #{c._id}
+                                    td #{c.desc}

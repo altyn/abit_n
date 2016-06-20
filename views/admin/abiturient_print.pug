@@ -1,0 +1,65 @@
+extends ../layout
+block content
+    #printarea
+        each a, i in abiturient
+            .row
+                .row.abitur-author-right
+                    .col.s4
+                        p
+                    .col.s4
+                        p
+                    .col.s4
+                        .right-align
+                            p
+                                span
+                                    strong Ректору Бишкекской Финансово -
+                                br
+                                span
+                                    strong Экономической Академии
+                                br
+                                span
+                                    strong доц. Сирмбард С.Р.
+                                br
+                                span
+                                    strong от #{a.lastname} #{a.name} #{a.middlename}
+                .row.abitur-title-center
+                    .col.s12
+                        .center
+                            strong
+                                h5 Заявление
+
+                .row.abitur-body
+                    .col.s1.no-print
+                        p
+                    .col.s10
+                        p
+                            | <strong>Прошу допустить к вступительным испытаниям для поступления на __#{a.to_course} курс</strong>
+                            br
+                            |<strong> Бишкекской Финансово-Экономической Академии по направлению __#{a.department}</strong>
+                            br
+                            |<strong>по форме обучения__ #{a.formaobuch}</strong>
+                            br
+                            |<strong>Домашний адрес по прописке:__ #{a.h_country}, #{a.h_region}, #{a.h_district}, #{a.home_address}</strong>
+                            br
+                            |<strong>Адрес фактического проживания:__ #{a.l_country}, #{a.l_region}, #{a.l_district}, #{a.live_address}</strong>
+                            br
+                            |<strong>Контактные данные(телефон, e-mail):__ #{a.phone}, #{a.email}</strong>
+                            br
+                            | <strong>Дата рождения: __#{moment(a.birthday).format('DD/MM/YYYY')}  Национальность:__ #{a.nationality}   Гражданство:__ #{a.citizenship}</strong>
+                            br
+                            |<strong>Паспорт: серия__ #{a.pass_series} #{a.pass_number} #{a.pass_from} от __#{moment(a.pass_date).format('DD/MM/YYYY')} </strong>
+                            br
+                            |<strong>Документ об образовании:(#{a.doc_type}) __#{a.doc_series} #{a.doc_number} #{a.doc_from} от __#{moment(a.doc_date).format('DD/MM/YYYY')}</strong>
+                            br
+                            br
+                            |<strong>Родители:</strong>
+                            br
+                            |</strong>Отец: #{a.about_father}</strong>
+                            br
+                            |</strong>Мать: #{a.about_mother}</strong>
+                            br
+                        .row.abitur-footer-sign
+                            .col.s6.left-align
+                                p "___" ________________201_ г
+                            .col.s6.no-print
+                                    p Подпись_____________________

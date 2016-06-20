@@ -1,2 +1,250 @@
 extends ../layout
 block content
+    .row
+        .col.s12.m4.l3
+            // Modal Trigger
+            a.waves-effect.waves-light.btn.modal-trigger(href='#modal1') Добавить
+
+        .col.s12.m8.l9
+            table.responsive-table
+                thead
+                    tr
+                        th(data-field='id') №
+                        th(data-field='fio') ФИО
+                        th(data-field='created') Дата создания
+                tbody
+                each a, i in new_abiturient.abiturient
+                    tr
+                        td #{i+1}
+                        td #{a.lastname} #{a.name} #{a.middlename}
+                        td #{moment(a.created).format('DD/MMM/YYYY')}
+                        td
+                            a(href='/abiturient/print/'+ a.regnumber, target="_blank")
+                                i.material-icons print
+
+
+
+
+    // Modal Structure
+    #modal1.modal.bottom-sheet.abit-modal
+        .modal-content
+            .row
+                form(action='/abiturient', method='post')
+                    ul.collapsible(data-collapsable='accordion')
+                        li
+                            .collapsible-header
+                                i.material-icons account_box
+                                | Общая информация об абитуриенте
+                            .collapsible-body
+                                .col.s12.m12.l12
+                                    .card-panel
+                                        .row
+                                                .row
+                                                    .input-field.col.s4
+                                                        input(type='text', name='regnumber')
+                                                        label(for='regnumber') Регистрационный номер
+                                                    .input-field.col.s2
+                                                        input(type='text', name='course')
+                                                        label(for='course') Курс
+                                                    .input-field.col.s6
+                                                        input.datepicker(type='date', name='birthdate')
+                                                        label(for='birthdate') Дата рождения
+                                                .row
+                                                    .input-field.col.s4
+                                                        input(type='text', name='surname')
+                                                        label(for='surname') Фамилия
+                                                    .input-field.col.s4
+                                                        input(type='text', name='name')
+                                                        label(for='name') Имя
+                                                    .input-field.col.s4
+                                                        input(type='text', name='middle_name')
+                                                        label(for='middle_name') Отчество
+                                                .row
+                                                    .input-field.col.s4
+                                                        select(name='nationality')
+                                                            if (!new_abiturient.nationalities.length.isUndefined)
+                                                                each data, i in new_abiturient.nationalities
+                                                                    option(name='#{data.desc}') #{data.desc}
+                                                            else
+                                                                option(name='Не определено', disabled='', selected='') Не определено
+                                                        label Выберите национальность
+                                                    .input-field.col.s4
+                                                            input(type='text', name='citizen')
+                                                            label(for='citizen') Гражданство
+                                                    .input-field.col.s4
+                                                        select(name='sex')
+                                                            option(name='Не определено', disabled='', selected='') Не определено
+                                                            option(name='Мужчина') Мужчина
+                                                            option(name='Женщина') Женщина
+                                                        label Выберите поло
+                        li
+                            .collapsible-header
+                                i.material-icons https
+                                | Личная информация абитуриента
+                            .collapsible-body
+                                .col.s12.m12.l12
+                                    .card-panel
+                                        .row
+                                                .row
+                                                    .input-field.col.s4
+                                                        select(name='department')
+                                                            - if (typeof(new_abiturient.departments) !== 'undefined'){
+                                                                each data, i in new_abiturient.departments
+                                                                    option(name='#{data.name}') #{data.name}
+                                                            -} else {
+                                                                option(name='Не определено', disabled='', selected='') Не определено
+                                                            -}
+                                                        label Департамент
+                                                    .input-field.col.s4
+                                                        select(name='formaobuch')
+                                                            if (!new_abiturient.formobuchs.length.isUndefined)
+                                                                each data, i in new_abiturient.formobuchs
+                                                                    option(name='#{data.desc}') #{data.desc}
+                                                            else
+                                                                option(name='Не определено', disabled='', selected='') Не определено
+                                                        label(for='formaobuch') Формы обучения
+                                                    .input-field.col.s4
+                                                        select(name='acdegree')
+                                                            if (!new_abiturient.academicdegree.length.isUndefined)
+                                                                each data, i in new_abiturient.academicdegree
+                                                                    option(name='#{data.desc}') #{data.desc}
+                                                            else
+                                                                option(name='Не определено', disabled='', selected='') Не определено
+                                                        label(for='acdegree') Академическая степень
+                                                .row
+                                                    .input-field.col.s2
+                                                        input(type='text', name='pass_series')
+                                                        label(for='pass_series') Паспорт серия
+                                                    .input-field.col.s3
+                                                        input(type='text', name='pass_number')
+                                                        label(for='pass_number') Номер паспорта
+                                                    .input-field.col.s4
+                                                        input(type='text', name='pass_from')
+                                                        label(for='pass_from') Орган выдавший документ
+                                                    .input-field.col.s3
+                                                        input.datepicker(type='date', name='pass_date')
+                                                        label(for='pass_date') Действителен до:
+                                                .row
+                                                    .input-filed.col.s2
+                                                        select(name='d_type')
+                                                            option(name='Аттестат', selected='') Аттестат
+                                                            option(name='Диплом') Диплом
+                                                        label Тип документа
+                                                    .input-field.col.s2
+                                                        input(type='text', name='d_series')
+                                                        label(for='d_series') Серия документа
+                                                    .input-field.col.s3
+                                                        input(type='text', name='d_number')
+                                                        label(for='d_number') Номер документа
+                                                    .input-field.col.s3
+                                                        input(type='text', name='d_from')
+                                                        label(for='d_from') Кем выдан
+                                                    .input-field.col.s2
+                                                        input.datepicker(type='date', name='d_date')
+                                                        label(for='d_date') Дата выдачи:
+
+                                                .row
+                                                    .input-field.col.s12
+                                                        select(name='ort')
+                                                            if (!new_abiturient.ort.length.isUndefined)
+                                                                each data, i in new_abiturient.ort
+                                                                   option(name='#{data.code}') Код:#{data.code} Осн тест:#{data.mainPoint} Предм. тест: #{data.subjectPoint} Цвет: #{data.color}
+                                                            else
+                                                                option(name='Не определено', disabled='', selected='') Не определено
+                                                        label(for='ort') Сертификат ОРТ
+                        li
+                            .collapsible-header
+                                i.material-icons location_on
+                                | Контакты абитуриента
+                            .collapsible-body
+                                .col.s12.m12.l12
+                                    .card-panel
+                                        .row
+                                                .row
+                                                    .input-field.col.s4
+                                                        select(name='h_country')
+                                                            if (!new_abiturient.countries.length.isUndefined)
+                                                                each data, i in new_abiturient.countries
+                                                                    option(name='#{data.desc}') #{data.desc}
+                                                            else
+                                                                option(name='Не определено', disabled='', selected='') Не определено
+                                                        label Выберите страну
+                                                    .input-field.col.s4
+                                                        select(name='h_region')
+                                                            if (!new_abiturient.regions.length.isUndefined)
+                                                                each data, i in new_abiturient.regions
+                                                                    option(name='#{data.desc}') #{data.desc}
+                                                            else
+                                                                option(name='Не определено', disabled='', selected='') Не определено
+                                                        label Выберите область
+                                                    .input-field.col.s4
+                                                        select(name='h_district')
+                                                            if (!new_abiturient.districts.length.isUndefined)
+                                                                each data, i in new_abiturient.districts
+                                                                    option(name='#{data.desc}') #{data.desc}
+                                                            else
+                                                                option(name='Не определено', disabled='', selected='') Не определено
+                                                        label Выберите район
+                                                .row
+                                                    .input-field.col.s12
+                                                        input(type='text', name='h_address')
+                                                        label(for='h_address') Адрес абитуриента по прописке
+
+                                                .row
+                                                    .input-field.col.s4
+                                                        select(name='l_country')
+                                                            if (!new_abiturient.countries.length.isUndefined)
+                                                                each data, i in new_abiturient.countries
+                                                                    option(name='#{data.desc}') #{data.desc}
+                                                            else
+                                                                option(name='Не определено', disabled='', selected='') Не определено
+                                                        label Выберите страну
+                                                    .input-field.col.s4
+                                                        select(name='l_region')
+                                                            if (!new_abiturient.regions.length.isUndefined)
+                                                                each data, i in new_abiturient.regions
+                                                                    option(name='#{data.desc}') #{data.desc}
+                                                            else
+                                                                option(name='Не определено', disabled='', selected='') Не определено
+                                                        label Выберите область
+                                                    .input-field.col.s4
+                                                        select(name='l_district')
+                                                            if (!new_abiturient.districts.length.isUndefined)
+                                                                each data, i in new_abiturient.districts
+                                                                    option(name='#{data.desc}') #{data.desc}
+                                                            else
+                                                                option(name='Не определено', disabled='', selected='') Не определено
+                                                        label Выберите район
+                                                .row
+                                                    .input-field.col.s12
+                                                        input(type='text', name='l_address')
+                                                        label(for='live_address') Фактический адрес абитуриента
+
+                                                .row
+                                                    .input-field.col.s6
+                                                        input(type='text', name='phone')
+                                                        label(for='phone') Номер телефона
+                                                    .input-field.col.s6
+                                                        input(type='email', name='email')
+                                                        label(for='email') Email
+                        li
+                            .collapsible-header
+                                i.material-icons info_outline
+                                | Данные о родителях
+                            .collapsible-body
+                                .col.s12.m12.l12
+                                    .card-panel
+                                        .row
+                                            .row
+                                                .input-field.col.s12
+                                                    textarea.materialize-textarea(name='about_f')
+                                                    label(for='about_f') Отец
+
+                                            .row
+                                                .input-field.col.s12
+                                                    textarea.materialize-textarea(name='about_m')
+                                                    label(for='about_m') Мать
+
+                            .modal-footer
+                                .row
+                                    input.btn.btn-success(type='submit', value='Сохранить')

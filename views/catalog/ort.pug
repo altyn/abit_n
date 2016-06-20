@@ -1,0 +1,74 @@
+extends ../layout.pug
+block content
+    .section
+        if message
+            p #{message}
+        #responsive-table
+            h4.header Каталог
+            .row
+                .col.s12.m4.l3
+                    // Modal Trigger
+                    a.waves-effect.waves-light.btn.modal-trigger(href='#modal1') Добавить
+                    #modal1.modal
+                        .modal-content
+                            h4 Добавить новые данные
+                            .row
+                            form(action='/ort', method='post')
+                                .row.margin
+                                    .input-field.col.s12
+                                        i.mdi-action-perm-identity.prefix
+                                        input(type='text', name='id')
+                                        label(for='id') ID Студента
+                                .row.margin
+                                    .input-field.col.s12
+                                        i.mdi-action-info-outline.prefix
+                                        input(type='text', name='code')
+                                        label(for='code') Код сертификата
+                                .row.margin
+                                    .input-field.col.s12
+                                        select(class="icons", name='color')
+                                            option(value="" disabled selected) Нет
+                                            option Золотой
+                                            option Фиолетовый
+                                            option Желтый
+                                            option Голубой
+                                            option Красный
+                                        label Цвет сертификата
+                                .row.margin
+                                    .input-field.col.s12
+                                        i.mdi-action-info-outline.prefix
+                                        input(type='text', name='mainpoint')
+                                        label(for='mainpoint') Основной тест
+                                .row.margin
+                                    .input-field.col.s12
+                                        i.mdi-action-info-outline.prefix
+                                        input(type='text', name='subjectpoint')
+                                        label(for='subjectpoint') Предметный тест
+                                .row.margin
+                                    .input-field.col.s12
+                                        i.mdi-action-info-outline.prefix
+                                        input(type='text', name='yr')
+                                        label(for='yr') Год сдачи теста
+
+                                .modal-footer
+                                    input.btn.btn-success(type='submit', value='Сохранить')
+                                    a.modal-action.modal-close.waves-effect.waves-red.btn-flat(href='#!') Отмена
+                .col.s12.m8.l9
+                    table.responsive-table.centered
+                        thead
+                            tr
+                                th(data-field='id') ID Студента
+                                th(data-field='code') Код сертификата
+                                th(data-field='color') Цвет
+                                th(data-field='mainpoint') Основной тест
+                                th(data-field='subjectpoint') Предметный тест
+                                th(data-field='foryear') Год
+                        tbody
+                            each c, i in catalog
+                                tr
+                                    td #{c._abiturId}
+                                    td #{c.code}
+                                    td #{c.color}
+                                    td #{c.mainPoint}
+                                    td #{c.subjectPoint}
+                                    td #{c.foryear}

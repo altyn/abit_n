@@ -3,15 +3,15 @@ var router = express.Router();
 var Sostobuch = require('../../models/catalog/sostobuch');
 
 router.get('/', function(req, res){
-    Zachislenie.
+    Sostobuch.
         find({}).
         sort({ _id: 'asc'}).
-        exec( function (err, zachislenie) {
+        exec( function (err, catalog) {
             if (err) return console.error(err);
 
-            res.render('catalog/zachislenie', {
-                title: 'Условия зачисления',
-                zachislenie: zachislenie
+            res.render('catalog/sostobuch', {
+                title: 'Состояние обучения',
+                catalog: catalog
             })
         });
 });
@@ -19,17 +19,17 @@ router.get('/', function(req, res){
 router.post('/', function (req, res, done) {
     var id = req.body._id;
 
-    Zachislenie.findOne({ '_id' : id}, function (err, catalog) {
+    Sostobuch.findOne({ '_id' : id}, function (err, catalog) {
 
         if (err)
             return done(err);
 
         if (catalog) {
-            req.flash('message', 'Пользователь с таким именем уже существует!');
-            res.redirect('/zachislenie');
+            req.flash('message', 'Уже существует!');
+            res.redirect('/sostobuch');
         } else {
 
-            var newCatalog = new Zachislenie();
+            var newCatalog = new Sostobuch();
 
             newCatalog._id = req.body._id;
             newCatalog.desc =  req.body.desc;
@@ -38,7 +38,7 @@ router.post('/', function (req, res, done) {
                 if (err)
                     throw err;
                 req.flash('message', 'Данные успешно добавлены!')
-                res.redirect('/zachislenie');
+                res.redirect('/sostobuch');
             });
         }
     });

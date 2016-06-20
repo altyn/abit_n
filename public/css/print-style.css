@@ -1,0 +1,35 @@
+@media print {
+    footer, aside, nav, .breadcrumbs-title, .breadcrumb, .no-print, .abitur-sign-right-align {
+        display: none;
+    }
+    #printarea, #printarea * {
+        display: block;
+        margin-left: 5px;
+    }
+    .abitur-author-right {
+        text-align: right;
+        margin: auto;
+        margin-top: 5px;
+    }
+    .abitur-title-center {
+        text-align: center;
+        font-size: 22pt;
+        margin-top: 10px;
+    }
+    .abitur-body {
+        text-align: left;
+        font-size: 12pt;
+    }
+    .abitur-footer-sign{
+        padding-bottom: 5px;
+        width: 70%;
+    }
+    .abitur-sign-right-align p{
+        text-align: right;
+        margin-right: 5px;
+    }
+    .abitur-sign-left-align p{
+        text-align: left;
+        margin-left: 5px;
+    }
+}

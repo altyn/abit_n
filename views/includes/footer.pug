@@ -14,18 +14,19 @@ footer.page-footer
   Scripts
   ================================================
 // materialize js
-script(type='text/javascript', src='js/materialize.js')
+script(type='text/javascript', src='/js/materialize.js')
 // prism
-script(type='text/javascript', src='js/prism.js')
+script(type='text/javascript', src='/js/prism.js')
 // scrollbar
-script(type='text/javascript', src='js/plugins/perfect-scrollbar/perfect-scrollbar.min.js')
+script(type='text/javascript', src='/js/plugins/perfect-scrollbar/perfect-scrollbar.min.js')
 // chartist
-script(type='text/javascript', src='js/plugins/chartist-js/chartist.min.js')
+script(type='text/javascript', src='/js/plugins/chartist-js/chartist.min.js')
 // plugins.js - Some Specific JS codes for Plugin Settings
-script(type='text/javascript', src='js/plugins.js')
+script(type='text/javascript', src='/js/plugins.js')
 
 script
     | $(document).ready(function(){
     | // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
     | $('.modal-trigger').leanModal();
+    | $('select').material_select();
     | });

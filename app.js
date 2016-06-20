@@ -14,10 +14,6 @@ var config = require('./config');
 var mongoose = require('./lib/mongoose');
 var MongoStore = require('connect-mongo')(session);
 
-
-//var routes = require('./routes/index');
-//var users = require('./routes/users');
-
 var app = express();
 
 // view engine setup
@@ -29,7 +25,7 @@ app.set('view engine', 'pug');
 app.use(methodOverride());
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
@@ -47,9 +43,6 @@ app.locals.moment = require('moment');
 
 require('./config/passport')(passport);
 app.use(require('./routes'));
-//
-//app.use('/', routes);
-//app.use('/users', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
