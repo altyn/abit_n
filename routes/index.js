@@ -21,7 +21,7 @@ router.use('/zachislenie', isLoggedIn, require('./catalog/zachislenie'));
 router.use('/ort', isLoggedIn, require('./catalog/ort'));
 
 /* Persons router*/
-router.use('/abiturient', /*isLoggedIn,*/ require('./abiturient'));
+router.use('/abiturient', isLoggedIn, require('./abiturient'));
 router.use('/students', isLoggedIn, require('./student'));
 router.use('/teachers', isLoggedIn, require('./teacher'));
 
