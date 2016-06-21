@@ -10,7 +10,7 @@ var departmentSchema = new Schema({
         type: String,
         required: true
     },
-    header: {
+    head: {
         type: String,
         default: 'Пользователь'
     },
@@ -25,7 +25,7 @@ var departmentSchema = new Schema({
     email: {
         type: String
     },
-    address: {
+    comment: {
         type: String
     }
 });

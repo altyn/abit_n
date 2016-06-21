@@ -1,0 +1,73 @@
+extends ../layout
+block content
+    .section
+        if message
+            p #{message}
+        #responsive-table
+            h4.header
+            .row
+                .col.s12.m4.l3
+                    // Modal Trigger
+                    a.waves-effect.waves-light.btn.modal-trigger(href='#modal1') Добавить
+                    #modal1.modal
+                        .modal-content
+                            h4 Добавить новые данные
+                            .row
+                            form(action='/departments', method='post')
+                                .row.margin
+                                    .input-field.col.s3
+                                        i.mdi-communication-vpn-key.prefix
+                                        input(type='text', name='_id')
+                                        label(for='_id') Id
+                                    .input-field.col.s9
+                                        i.mdi-action-info-outline.prefix
+                                        input(type='text', name='desc')
+                                        label(for='desc') Название
+                                .row.margin
+                                    .input-field.col.s12
+                                        i.mdi-action-face-unlock.prefix
+                                        input(type='text', name='header')
+                                        label(for='header') Руководитель
+                                .row.margin
+                                    .input-field.col.s12
+                                        i.mdi-communication-quick-contacts-dialer.prefix
+                                        input(type='text', name='assist')
+                                        label(for='assist') Ассистент
+                                .row.margin
+                                    .input-field.col.s6
+                                        i.mdi-maps-local-phone.prefix
+                                        input(type='text', name='phone')
+                                        label(for='phone') Телефон
+                                    .input-field.col.s6
+                                        i.mdi-communication-email.prefix
+                                        input(type='email', name='email')
+                                        label(for='email') Email
+                                .row.margin
+                                    .input-field.col.s12
+                                        i.mdi-editor-insert-comment.prefix
+                                        textarea.materialize-textarea(name='note')
+                                        label(for='note') Примечание
+
+                                .modal-footer
+                                    input.btn.btn-success(type='submit', value='Сохранить')
+                                    a.modal-action.modal-close.waves-effect.waves-red.btn-flat(href='#!') Отмена
+                .col.s12.m8.l9
+                    table.responsive-table
+                        thead
+                            tr
+                                th(data-field='id') ID
+                                th(data-field='name') Описание
+                                th(data-field='header') Руководитель
+                                th(data-field='assist') Ассистент
+                                th(data-field='phone') Телефон
+                                th(data-field='email') Email
+
+                        tbody
+                            each c, i in departments
+                                tr
+                                    td #{c._id}
+                                    td #{c.name}
+                                    td #{c.head}
+                                    td #{c.assistant}
+                                    td #{c.phone}
+                                    td #{c.email}
