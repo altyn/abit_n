@@ -24,7 +24,7 @@ router.get('/', function(req, res){
 
     }, function(err, catalog){
         res.render('catalog/region', {
-            title: 'Регионы',
+            title: 'Каталог "Регионы"',
             catalog: catalog
         });
     });

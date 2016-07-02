@@ -24,11 +24,12 @@ router.use('/ort', isLoggedIn, require('./catalog/ort'));
 router.use('/abiturient', isLoggedIn, require('./abiturient'));
 router.use('/students', isLoggedIn, require('./student'));
 router.use('/teachers', isLoggedIn, require('./teacher'));
+router.use('/comission', isLoggedIn, require('./comission'));
 
 
 /* Main pages routers */
 router.get('/', function(req, res, next) {
-    res.render('index', { title: 'Express' });
+    res.render('index', { title: "BDOC - BAFE" });
 });
 router.get('/dashboard', isLoggedIn, function(req, res, next) {
     res.render('admin/dashboard', { title: 'Dashboard' });

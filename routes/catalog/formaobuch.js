@@ -10,7 +10,7 @@ router.get('/', function(req, res){
             if (err) return console.error(err);
 
             res.render('catalog/formaobuch', {
-                title: 'Форма обучения',
+                title: 'Каталог "Форма обучения"',
                 catalog: catalog
             })
         });

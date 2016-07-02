@@ -19,6 +19,7 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
+app.set('x-powered-by', false);
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -40,6 +41,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 app.locals.moment = require('moment');
+app.locals.pretty = true;
 
 require('./config/passport')(passport);
 app.use(require('./routes'));

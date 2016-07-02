@@ -1,0 +1,22 @@
+{
+  "port" : 3001,
+  "mongoose" : {
+    "uri" : "mongodb://127.0.0.1:27017/dbweb",
+    "options" : {
+      "server" : {
+        "socketOptions" : {
+          "keepAlive" : 1
+        }
+      }
+    }
+  },
+  "session" : {
+    "secret" : "abiturBafe1994!",
+    "key" : "abitbafeeduk",
+    "cookie" : {
+      "path" : "/",
+      "httpOnly" : true,
+      "maxAge": null
+    }
+  }
+}

@@ -10,7 +10,7 @@ router.get('/', function(req, res){
             if (err) return console.error(err);
 
             res.render('catalog/actitle', {
-                title: 'Каталог "Ученые звания',
+                title: 'Каталог "Ученые звания"',
                 catalog: catalog
             })
         });

@@ -10,7 +10,7 @@ router.get('/', function(req, res){
             if (err) return console.error(err);
 
             res.render('catalog/jobstatus', {
-                title: 'Статус ППС',
+                title: 'Каталог "Статус ППС"',
                 catalog: catalog
             })
         });
