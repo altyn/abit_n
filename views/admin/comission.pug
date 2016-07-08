@@ -50,6 +50,7 @@ block content
                         th(data-field='id') №
                         th(data-field='regnumber') Рег. номер
                         th(data-field='fio') ФИО
+                        th(data-filed='depart') Напраление
                         th(data-field='point') Баллы
                         th(data-field='created') Дата создания
                 tbody
@@ -58,5 +59,6 @@ block content
                             td #{i+1}
                             td #{c.regnumber}
                             td #{c.lastname} #{c.name} #{c.middlename}
+                            td #{c.department}
                             td #{c.point}
                             td #{moment(c.created).format('DD-MM-YYYY HH:mm', 'RU')}
