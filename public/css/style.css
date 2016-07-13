@@ -1460,3 +1460,7 @@ footer.page-footer {
   max-height: 70% !important;
   min-height: 45% !important;
 }
+
+a.dropdown-button.btn.sort_dep_button {
+  margin-top: 2%;
+}

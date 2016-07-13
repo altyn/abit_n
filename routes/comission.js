@@ -30,6 +30,32 @@ router.get('/', function(req, res){
     });
 });
 
+router.get('/list/:departmentasparam', function(req, res){
+
+    var data;
+    data = {};
+
+    async.parallel({
+        comission: function (callback) {
+            return Comission.find({department: req.params.departmentasparam}).sort({ point: 'desc'}).exec( function (err, result) {
+                if (err) return (err);
+                return callback(err, result);
+            });
+        },
+        departments: function (callback) {
+            return Department.find({}).sort('_id').exec( function (err, result) {
+                if (err) return (err);
+                return callback(err, result);
+            });
+        }
+    }, function(err, data){
+        res.render('admin/comission', {
+            title: 'Список абитуриентов',
+            data: data
+        });
+    });
+});
+
 router.post('/', function (req, res, done) {
 
     var newData = new Comission();

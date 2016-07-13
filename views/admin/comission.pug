@@ -2,8 +2,22 @@ extends ../layout
 block content
     .row
         .col.s12.m4.l3
-            // Modal Trigger
-            a.waves-effect.waves-light.btn.modal-trigger(href='#modal1') Добавить
+            .row.no-print
+                .col.s12.m12.l12
+                    // Modal Trigger
+                    a.waves-effect.waves-light.btn.modal-trigger(href='#modal1') Добавить
+
+                .col.s12.m12.l12
+                    a.dropdown-button.btn.sort_dep_button(href='/comission') Полный список
+
+                .col.s12.m12.l12
+                    // Dropdown Trigger
+                    a.dropdown-button.btn.sort_dep_button(href='#', data-activates='dropdown1') Сортировка по напралению
+                    // Dropdown Structure
+                    ul#dropdown1.dropdown-content
+                        each c, i in data.departments
+                            li
+                                a(href='/comission/list/'+c.name) #{c.name}
 
             #modal1.modal
                 .modal-content
@@ -44,7 +58,9 @@ block content
                             a.modal-action.modal-close.waves-effect.waves-red.btn-flat(href='#!') Отмена
 
         .col.s12.m8.l9
-            table.responsive-table
+
+
+            table.responsive-table.striped
                 thead
                     tr
                         th(data-field='id') №
@@ -62,3 +78,7 @@ block content
                             td #{c.department}
                             td #{c.point}
                             td #{moment(c.created).format('DD-MM-YYYY HH:mm', 'RU')}
+
+
+
+            script

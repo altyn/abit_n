@@ -1,0 +1,28 @@
+extends ../layout
+block content
+
+    p Всего абитуриентов:  #{data.total}
+    p По направлениям:
+        each c, i in data.byDepartmentChart
+            p #{c._id} - #{c.count}
+
+    .col.s12.m8.l9
+
+        table.responsive-table
+            thead
+                tr
+                    th(data-field='id') №
+                    th(data-field='regnumber') Рег. номер
+                    th(data-field='fio') ФИО
+                    th(data-filed='depart') Напраление
+                    th(data-field='point') Баллы
+                    th(data-field='created') Дата создания
+            tbody
+                each c, i in data.comission
+                    tr
+                        td #{i+1}
+                        td #{c.regnumber}
+                        td #{c.lastname} #{c.name} #{c.middlename}
+                        td #{c.department}
+                        td #{c.point}
+                        td #{moment(c.created).format('DD-MM-YYYY HH:mm', 'RU')}

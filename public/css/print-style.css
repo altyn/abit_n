@@ -1,5 +1,5 @@
 @media print {
-    footer, aside, nav, .breadcrumbs-title, .breadcrumb, .no-print, .abitur-sign-right-align {
+    footer, aside, nav, .breadcrumbs-title, .breadcrumb, .no-print, .abitur-sign-right-align, .modal {
         display: none;
     }
     #printarea, #printarea * {

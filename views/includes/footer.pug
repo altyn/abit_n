@@ -19,8 +19,6 @@ script(type='text/javascript', src='/js/materialize.js')
 script(type='text/javascript', src='/js/prism.js')
 // scrollbar
 script(type='text/javascript', src='/js/plugins/perfect-scrollbar/perfect-scrollbar.min.js')
-// chartist
-script(type='text/javascript', src='/js/plugins/chartist-js/chartist.min.js')
 // plugins.js - Some Specific JS codes for Plugin Settings
 script(type='text/javascript', src='/js/plugins.js')
 
@@ -29,4 +27,14 @@ script
     | // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
     | $('.modal-trigger').leanModal();
     | $('select').material_select();
+    | $('.dropdown-button').dropdown({
+    | inDuration: 300,
+    | outDuration: 225,
+    | constrain_width: false, // Does not change width of dropdown to that of the activator
+    | hover: true, // Activate on hover
+    | gutter: 0, // Spacing from edge
+    | belowOrigin: false, // Displays dropdown below the button
+    | alignment: 'left' // Displays dropdown with edge aligned to the left of button
+    | }
+    | );
     | });

@@ -19,6 +19,7 @@ router.use('/region', isLoggedIn, require('./catalog/region'));
 router.use('/sostobuch', isLoggedIn, require('./catalog/sostobuch'));
 router.use('/zachislenie', isLoggedIn, require('./catalog/zachislenie'));
 router.use('/ort', isLoggedIn, require('./catalog/ort'));
+//router.use('/stats', isLoggedIn,  require('./stats.js'));
 
 /* Persons router*/
 router.use('/abiturient', isLoggedIn, require('./abiturient'));
