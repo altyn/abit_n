@@ -72,10 +72,20 @@ aside#left-sidebar-nav
       .divider
     li.li-hover
       p.ultra-small.margin.more-text Основные
-    li.bold
-      a.waves-effect.waves-cyan(href='/comission')
-        i.mdi-social-people
-        |  Приемная комиссия
+    li.no-padding
+      ul.collapsible.collapsible-accordion
+        li.bold
+          a.collapsible-header.waves-effect.waves-cyan
+            i.mdi-social-people
+            |  Приемная комиссия
+          .collapsible-body
+            ul
+              li
+                a(href='/comission') Абитуриетны
+              li
+                a(href='/comission/others') Без ОРТ
+
+
     li.bold
       a.waves-effect.waves-cyan(href='/students')
         i.mdi-social-people

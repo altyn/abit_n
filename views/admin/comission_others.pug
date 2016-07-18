@@ -1,0 +1,46 @@
+extends ../layout
+block content
+    .row
+        .col.s12.m4.l3
+            .row.no-print
+                .row
+                    form.col.s10.center-align(action='/comission/others/', method='post')
+
+                        .input-field.col.s12
+                            select(name='department')
+                                each c, i in data.departments
+                                    option(name="#{c.name}", value=c._id) #{c.name}
+                            label Выберите направление
+                        .input-field.col.s12
+                            select(name='formaobuch')
+                                each c, i in data.formaobuch
+                                    option(name="#{c.desc}", value=c._id) #{c.desc}
+                            label Выберите форму обучения
+                        .row
+                            input.btn.btn-success.center-align(type='submit', value='Поиск')
+        .col.s12.m8.l9
+
+
+            table.responsive-table.striped
+                thead
+                    tr
+                        th(data-field='id') №
+                        th(data-field='regnumber') Рег. номер
+                        th(data-field='fio') ФИО
+                        th(data-filed='depart') Напраление
+                        th(data-filed='formobuch') Форма обучения
+                        th(data-field='point') Баллы
+                        th(data-field='created') Дата создания
+                tbody
+                    each c, i in data.comission
+                        tr
+                            td #{i+1}
+                            td #{c.regnumber}
+                            td #{c.lastname} #{c.name} #{c.middlename}
+                            td #{c.department}
+                            td #{c.formaobuch}
+                            td #{c.point}
+                            td #{moment(c.created).format('DD-MM-YYYY HH:mm', 'RU')}
+                            td
+                                a(href='/comission/print/'+c.regnumber, target="_blank")
+                                    i.material-icons print

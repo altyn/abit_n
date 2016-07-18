@@ -1,0 +1,21 @@
+extends ../layout
+block content
+    #printarea
+        each c, i in data
+            .row.others_print
+                .col.l6.others_print_left
+                    p Примечание:
+                    p 1. Экзаменационный лист служит пропуском на экзамен.
+                    p 2. По окончании вступительных экзаменов экзаменационный лист должен быть возращен в приемную комиссию.
+                    p 3. При получении неуловлетворительной оценки экзаменационный лист остается у экзаменатора
+                    p 4. Не зачисленные в учебное заведение получат обратно свои документы в приемной комиссии после сдачи экзаменационного листа
+                    p 5. Опоздавшие и не явившиеся в срок допускаются с разрешения ответственного секретаря приемной комиссии
+                .divider.no-print
+                .col.l6.others_print_right
+                    .row
+                        .col.l4
+                            img.responsive-img.others_print_left(src="/img/avatars/default-avatar-guy.png")
+                        .col.l8.others_print_right
+                            p.abitur-author-right.right-align Форма №4
+                            h6.abitur-title-center-h.center-align Бишкекская Финансово-Экономическая Академия
+                            p.center-align #{c.formaobuch}

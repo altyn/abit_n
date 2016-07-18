@@ -27,6 +27,16 @@ var comissionSchema = new Schema({
         type: String,
         reuired: true
     },
+    formaobuch: {
+        type: String,
+        reuired: true,
+        default: "Не определено"
+    },
+    tour: {
+        type: Number,
+        required: true,
+        default : 1
+    },
     passed: {
         type: Boolean,
         required: true,

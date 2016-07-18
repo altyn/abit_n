@@ -16,6 +16,12 @@
         font-size: 22pt;
         margin-top: 10px;
     }
+    .abitur-title-center-h {
+        text-align: center;
+        font-size: 12pt;
+        margin-top: 10px;
+    }
+
     .abitur-body {
         text-align: left;
         font-size: 12pt;
@@ -31,5 +37,21 @@
     .abitur-sign-left-align p{
         text-align: left;
         margin-left: 5px;
+    }
+
+    .others_print {
+        display: inline-block;
+    }
+
+    .others_print p{
+        font-size: 12pt;
+    }
+    .others_print_left {
+        width: 40%;
+        float: left;
+    }
+    .others_print_right {
+        width: 50%;
+        float: right;
     }
 }
