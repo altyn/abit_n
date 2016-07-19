@@ -12,7 +12,7 @@ router.get('/', function(req, res){
 
     async.parallel({
         comission: function (callback) {
-            return Comission.find({point: { $gt: 0}}).sort({ point: 'desc'}).exec( function (err, result) {
+            return Comission.find({point: { $gt: 0}}).sort({ point: 1}).exec( function (err, result) {
                 if (err) return (err);
                 return callback(err, result);
             });
@@ -63,6 +63,43 @@ router.get('/sort', function(req, res){
 router.post('/sort', function(req, res){
     var tour = req.body.tour;
     res.redirect('/comission/sort/'+tour+'/'+req.body.department+'/'+req.body.formaobuch);
+});
+router.get('/tour/:tour', function(req, res){
+    var tour = 1;
+
+    tour = req.params.tour;
+
+    var data;
+    data = {};
+
+    async.parallel({
+        comission: function (callback) {
+            return Comission
+                    .find({tour: tour})
+                    .sort({point: 'desc'})
+                    .exec(function (err, result) {
+                        if (err) res.redirect('comission');
+                            return callback(err, result);
+                        });
+        },
+        departments: function (callback) {
+            return Department.find({}).sort('_id').exec( function (err, result) {
+                if (err) return (err);
+                return callback(err, result);
+            });
+        },
+        formaobuch: function (callback) {
+            return Formaobuch.find({}).sort('_id').exec( function (err, result) {
+                if (err) return (err);
+                return callback(err, result);
+            });
+        }
+    }, function(err, data){
+        res.render('admin/comission_sort', {
+            title: 'Список абитуриентов отсортированный',
+            data: data
+        });
+    });
 });
 router.get('/sort/:tour/:depId/:formId', function(req, res){
     var tour = 1;

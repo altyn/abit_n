@@ -14,8 +14,83 @@ block content
                 .col.l6.others_print_right
                     .row
                         .col.l4
-                            img.responsive-img.others_print_left(src="/img/avatars/default-avatar-guy.png")
+                            img.responsive-img.others_print_left(src="/img/avatars/blank-avatar.png")
                         .col.l8.others_print_right
                             p.abitur-author-right.right-align Форма №4
                             h6.abitur-title-center-h.center-align Бишкекская Финансово-Экономическая Академия
-                            p.center-align #{c.formaobuch}
+                            p.formaobuch_p.center-align #{c.formaobuch}
+
+                    .row.print-blocks-one-line
+                        .col.s12.m12.l12
+                            h6.abitur-title-center-h.center-align
+                                strong Экзаменационный лист №
+                    .row
+                        .col.s12.m12.l12
+                                p
+                                    strong Специальность #{c.department}
+                                p
+                                    strong Форма обучения #{c.formaobuch}
+                                p
+                                    strong Группа
+                                p
+                                    strong Фамилия #{c.lastname}
+                                p
+                                    strong Имя #{c.name}
+                                p
+                                    strong Отчество #{c.middlename}
+
+                    .row
+                            .divider
+                            p.center-align Дата выдачи "___"___________ #{new Date().getFullYear()}
+                            p.little_letters Ответственный cекретарь приемной комиссии ______________
+
+
+        .next-page
+
+        .row
+            .col.l12
+                h5 Оценки полученные на вступительных экзаменах
+            .col.l12
+                table
+                    thead
+                        tr
+                            th №
+                            th Наименование дисциплин
+                            th Характер экзамена
+                            th Дата испытаний (число, месяц)
+                            th Оценка (баллы) цифрой прописью
+                            th ФИО экзаменаторов
+                            th Подпись экзаменаторов
+                    tbody
+                        tr
+                            td 1
+                            td 1
+                            td 1
+                            td 1
+                            td 1
+                            td 1
+                            td 1
+                        tr
+                            td
+                            td
+                            td
+                            td
+                            td
+                            td
+                            td
+                        tr
+                            td
+                            td
+                            td
+                            td
+                            td
+                            td
+                            td
+                        tr
+                            td
+                            td
+                            td
+                            td
+                            td
+                            td
+                            td
