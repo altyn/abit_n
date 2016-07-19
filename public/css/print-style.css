@@ -64,11 +64,12 @@
         margin-top: 2px;
         font-size: 8pt;
     }
-    table, th, td
+     table, th, td
     {
         border-collapse:collapse;
         border: 1px solid black;
-        width:100%;
-        text-align:right;
+        /*width:100%;*/
+        text-align:center;
     }
+
 }
