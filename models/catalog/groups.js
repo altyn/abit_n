@@ -1,8 +1,13 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var mongoosePaginate = require('mongoose-paginate');
 
 var groupsSchema = new Schema({
-    _id: {
+    department: {
+        type: String,
+        required: true
+    },
+    code: {
         type: String,
         required: true
     },
@@ -17,7 +22,7 @@ var groupsSchema = new Schema({
     },
     curator: {
         type: String,
-        default: 'N/A'
+        default: 'Не определено'
     },
     formaobuch: {
         type: String
@@ -28,7 +33,12 @@ var groupsSchema = new Schema({
     updated: {
         type: Date,
         default: Date.now
+    },
+    graduated : {
+        type: Boolean,
+        default: false
     }
 });
 
+groupsSchema.plugin(mongoosePaginate);
 module.exports = mongoose.model('Groups', groupsSchema);

@@ -1,0 +1,27 @@
+extends ../layout
+block content
+    .row
+        .col.s12.m4.l3
+            .col.s12.m12.l12.no-print
+
+        .col.s12.m8.l9
+            table.responsive-table.striped
+                thead
+                    tr
+                        th(data-field='id') №
+                        th(data-field='code') Группа
+                        th(data-field='fio') Название группы
+                        th(data-filed='depart') Направление
+                        th(data-filed='formobuch') Форма обучения
+                        th(data-field='curator') Куратор
+                        th(data-field='semestr') Семестр
+                tbody
+                    each c, i in data.groups
+                        tr
+                            td #{i + 1}
+                            td #{c.code}
+                            td #{c.name}
+                            td #{c.department}
+                            td #{c.formaobuch}
+                            td #{c.curator}
+                            td #{c.semestr}

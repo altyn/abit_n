@@ -8,7 +8,7 @@ router.use('/acdegree', isLoggedIn, require('./catalog/acdegree'));
 router.use('/actitle', isLoggedIn, require('./catalog/actitle'));
 router.use('/country', isLoggedIn, require('./catalog/country'));
 router.use('/departments', isLoggedIn, require('./catalog/departments'));
-router.use('/groups', isLoggedIn, require('./groups'));
+router.use('/groups', /*isLoggedIn,*/ require('./catalog/groups'));
 router.use('/district', isLoggedIn, require('./catalog/district'));
 router.use('/discipline', isLoggedIn, require('./catalog/discipline'))
 router.use('/formaobuch', isLoggedIn, require('./catalog/formaobuch'));

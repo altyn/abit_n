@@ -1,2 +1,75 @@
 extends ../layout
 block content
+    .row
+        .col.s12.m4.l3
+            .col.s12.m12.l12.no-print
+                // Modal Trigger
+                a.waves-effect.waves-light.btn.modal-trigger(href='#modal1') Добавить
+
+            #modal1.modal
+                .modal-content
+                    h4 Добавить новые данные
+                    .row
+                    form(action='/groups/add', method='post')
+
+                        .row.margin
+                            .input-field.col.s12
+                                select(name='department')
+                                    each c, i in data.departments
+                                        option(name="#{c.name}") #{c.name}
+                                label Выберите направление
+                            .input-field.col.s12
+                                select(name='formaobuch')
+                                    each c, i in data.formaobuch
+                                        option(name="#{c.desc}") #{c.desc}
+                                label Выберите форму обучения
+
+                        .row.margin
+                            .input-field.col.s12
+                                i.mdi-action-info-outline.prefix
+                                input(type='text', name='code')
+                                label(for='code') Код группы
+                            .input-field.col.s12
+                                i.mdi-action-info-outline.prefix
+                                input(type='text', name='name')
+                                label(for='name') Название группы
+                            .input-field.col.s12
+                                i.mdi-action-info-outline.prefix
+                                input(type='number', name='semestr')
+                                label(for='semestr') Семестр
+                            .input-field.col.s12
+                                select(name='curator')
+                                    each c, i in data.departments
+                                        option(name="#{c.name}") #{c.name}
+                                label Куратор
+
+                            .input-field.col.s12
+                                textarea.materialize-textarea(name='note')
+                                label(for='note') Примечания
+
+                        .modal-footer
+                            input.btn.btn-success(type='submit', value='Сохранить')
+                            a.modal-action.modal-close.waves-effect.waves-red.btn-flat(href='#!') Отмена
+        .col.s12.m8.l9
+
+        .col.s12.m8.l9
+            table.responsive-table.striped
+                    thead
+                        tr
+                            th(data-field='id') №
+                            th(data-field='code') Группа
+                            th(data-field='fio') Название группы
+                            th(data-filed='depart') Направление
+                            th(data-filed='formobuch') Форма обучения
+                            th(data-field='curator') Куратор
+                            th(data-field='semestr') Семестр
+                    tbody
+                        each c, i in data.groups
+                            tr
+                                td #{i + 1}
+                                td #{c.code}
+                                td #{c.name}
+                                td #{c.department}
+                                td #{c.formaobuch}
+                                td #{c.curator}
+                                td #{c.semestr}
