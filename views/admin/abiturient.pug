@@ -19,8 +19,9 @@ block content
                         td #{a.lastname} #{a.name} #{a.middlename}
                         td #{moment(a.created).format('DD/MMM/YYYY')}
                         td
-                            a(href='/abiturient/print/'+ a.regnumber, target="_blank")
-                                i.material-icons print
+                            form(method="POST", action='/comission/delete/'+ a.regnumber)
+                                input.btn.btn-success(type='submit')
+                                    i.material-icons delete
 
 
 

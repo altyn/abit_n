@@ -1,8 +1,13 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var abiturientSchema = new Schema({
+var studentSchema = new Schema({
 
+    /*========= Personal Data (Required)=========*/
+    _id: {
+        type: String,
+        required: true
+    },
     lastname:{
         type: String,
         required: true
@@ -27,8 +32,27 @@ var abiturientSchema = new Schema({
         type: String,
         required: true
     },
+    birthdate: {
+        type: Date,
+        required: true
+    },
+    email: {
+        type: String
+    },
+    phone:{
+        type: String
+    },
+    avatar: {
+        type: String
+    },
+
+    /*========= Data for education (Required)=========*/
     department:{
         type: String
+    },
+    group_code: {
+        type: String,
+        required: true
     },
     formaobuch:{
         type: String,
@@ -38,9 +62,20 @@ var abiturientSchema = new Schema({
         type: String,
         required: true
     },
-    to_course: {
+    semestr: {
         type: Number,
         default: 01
+    },
+    zachislenie: {
+        type: String,
+        default: "Не определено"
+    },
+    summa_kontrakta: {
+        type: Number,
+        default: 0
+    },
+    sostobuch: {
+        type: String
     },
 
     /*========= Passport Data (Required)=========*/
@@ -78,17 +113,19 @@ var abiturientSchema = new Schema({
     doc_date: {
         type: Date
     },
-
-
     ortid: {
         type: String
     },
-    birthdate: {
-        type: Date,
-        required: true
-    },
-    email: {
+
+    /*=========== Documents =======*/
+    bafe_diplom_ser: {
         type: String
+    },
+    bafe_diplom_number: {
+        type: String
+    },
+    bafe_diplom_date: {
+        type: Date
     },
 
     /*========== Address =========*/
@@ -116,18 +153,15 @@ var abiturientSchema = new Schema({
     live_address: {
         type: String
     },
-    phone:{
-        type: String
-    },
+
+
     created: {
         type: Date,
         default: Date.now
     },
     edited: {
-        type: Date
-    },
-    avatar: {
-        type: String
+        type: Date,
+        default: Date.now
     },
 
     /*========== About Relatives ===========*/
@@ -140,4 +174,4 @@ var abiturientSchema = new Schema({
 
 });
 
-module.exports = mongoose.model('Abiturient', abiturientSchema);
+module.exports = mongoose.model('Student', studentSchema);

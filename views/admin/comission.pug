@@ -98,6 +98,7 @@ block content
                         th(data-filed='formobuch') Форма обучения
                         th(data-field='point') Баллы
                         th(data-field='created') Дата создания
+                        th(data-field='buttons')
                 tbody
                     each c, i in data.comission
                         tr
@@ -108,3 +109,7 @@ block content
                             td #{c.formaobuch}
                             td #{c.point}
                             td #{moment(c.created).format('DD-MM-YYYY HH:mm', 'RU')}
+                            td
+                                form(action='/comission/delete/'+ c.regnumber, method="POST")
+                                    button.btn.waves-effect.waves-light(type='submit', name='action')
+                                        i.material-icons.center delete

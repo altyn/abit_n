@@ -56,6 +56,21 @@ router.post('/', function (req, res, done) {
         res.redirect('/comission');
     });
 });
+router.post('/delete/:personId', function (req, res) {
+    //Comission.findOne({ field : 'toto'}, function (err, model) {
+    //    if (err) {
+    //        return;
+    //    }
+    //    model.remove(function (err) {
+    //        // if no error, your model is removed
+    //    });
+    //});
+    Comission.remove({regnumber: req.params.personId}).exec( function(err, data) {
+        if (err) console.error(err);
+        req.flash({message: "Deleted Successfully"});
+        res.redirect('/comission');
+    });
+});
 
 router.get('/sort', function(req, res){
     res.redirect('/comission/');
