@@ -104,7 +104,8 @@ block content
                         tr
                             td #{i+1}
                             td #{c.regnumber}
-                            td #{c.lastname} #{c.name} #{c.middlename}
+                            td
+                                a(href='/students/new/'+c.regnumber) #{c.lastname} #{c.name} #{c.middlename}
                             td #{c.department}
                             td #{c.formaobuch}
                             td #{c.point}

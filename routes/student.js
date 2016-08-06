@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var async = require('async');
 var Student = require('../models/student/student');
+var Comission = require('../models/comission');
 var Nationality = require('../models/catalog/nationality');
 var Department = require('../models/catalog/departments');
 var Formobuch = require('../models/catalog/formaobuch');
@@ -157,6 +158,100 @@ router.post('/new', function(req, res, done){
     });
     //    }
     //});
+});
+
+router.get('/new/:regnumber', function(req, res){
+
+    var regnumberId = req.params.regnumber;
+
+
+    var new_abiturient;
+
+    new_abiturient = {};
+
+    async.parallel({
+
+        comission: function (callback) {
+            return Comission.find({regnumber : regnumberId }).sort('_id').exec( function (err, result) {
+                if (err) console.error(err);
+                return callback(err, result);
+            });
+        },
+        nationalities: function (callback) {
+            return Nationality.find({}).sort('_id').exec( function (err, result) {
+                if (err) console.error(err);
+                return callback(err, result);
+            });
+        },
+        departments: function (callback) {
+            return Department.find({}).sort('_id').exec( function (err, result) {
+                if(err) return(err);
+                if (!result){
+                    result === 'No departments';
+                    return callback(err, result);
+                } else {
+                    return callback(err, result);
+                }
+            });
+        },
+        formobuchs: function (callback) {
+            return Formobuch.find({}).sort('_id').exec( function (err, result) {
+                if(err) return(err);
+                return callback(err, result)
+            });
+        },
+        academicdegree: function (callback) {
+            return Acdegree.find({}).sort('_id').exec( function (err, result) {
+                if(err) return(err);
+                return callback(err, result);
+            });
+        },
+        ort: function (callback) {
+            return Ort.find({}).sort({'created': -1}).exec( function (err, result) {
+                if(err) return(err);
+                return callback(err, result);
+            });
+        },
+        countries: function (callback) {
+            return Country.find({}).sort('_id').exec( function (err, result) {
+                if(err) return (err);
+                return callback(err, result);
+            });
+        },
+        regions: function (callback) {
+            return Region.find({}).sort('_id').exec( function (err, result) {
+                if(err) return(err);
+                if (!result){
+                    result === 'No regions';
+                    return callback(err, result);
+                } else {
+                    return callback(err, result);
+                }
+
+            });
+        },
+        districts: function (callback) {
+            return District.find({}).sort('_id').exec( function (err, result) {
+                if(err) return(err);
+                if (!result){
+                    result === 'No districts';
+                    return callback(err, result);
+                } else {
+                    return callback(err, result);
+                }
+
+            });
+        }
+
+    }, function(err, new_abiturient){
+        //res.jsonp(data)
+        res.render( 'student/student_new', {
+            title : 'Добавить нового студента',
+            new_abiturient: new_abiturient
+        });
+        console.log(new_abiturient);
+    });
+
 });
 
 module.exports = router;
