@@ -14,7 +14,7 @@ block content
                                     .row
                                         .input-field.col.s4
                                             input(type='text', name='regnumber')
-                                            label(for='regnumber') Регистрационный номер
+                                            label(for='regnumber') ID студента
                                         .input-field.col.s2
                                             input(type='text', name='course')
                                             label(for='course') Курс
@@ -67,7 +67,19 @@ block content
                                                         option(name='Не определено', disabled='', selected='') Не определено
                                                     -}
                                                 label Департамент
+
                                             .input-field.col.s4
+                                                select(name='group')
+                                                    - if (typeof(new_abiturient.departments) !== 'undefined'){
+                                                        each data, i in new_abiturient.groups
+                                                            option(name='#{data.code}') #{data.code} | #{data.name}
+                                                    -} else {
+                                                        option(name='Не определено', disabled='', selected='') Не определено
+                                                    -}
+                                                label Группы
+
+                                        .row
+                                            .input-field.col.s6
                                                 select(name='formaobuch')
                                                     if (!new_abiturient.formobuchs.length.isUndefined)
                                                         each data, i in new_abiturient.formobuchs
@@ -75,7 +87,7 @@ block content
                                                     else
                                                         option(name='Не определено', disabled='', selected='') Не определено
                                                 label(for='formaobuch') Формы обучения
-                                            .input-field.col.s4
+                                            .input-field.col.s6
                                                 select(name='acdegree')
                                                     if (!new_abiturient.academicdegree.length.isUndefined)
                                                         each data, i in new_abiturient.academicdegree

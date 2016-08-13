@@ -1464,3 +1464,8 @@ footer.page-footer {
 a.dropdown-button.btn.sort_dep_button {
   margin-top: 2%;
 }
+
+#scrollable-dropdown-menu .tt-dropdown-menu {
+  max-height: 150px;
+  overflow-y: auto;
+}
